@@ -1,0 +1,23 @@
+var http = require("http");//nodejs 加载模块的方法 ,http 系统模块专门供node创建服务用的
+
+http.createServer(function(req,res){ //请求对象，响应对象
+    //console.log("有狗来了！")
+    //console.log(req.url);
+    console.log(req.method);
+
+      var postHTML = 
+	  '<html><head><meta charset="utf-8"><title>NODE</title></head>' +
+	  '<body>' +
+	  '<form method="post" action="/api/login">' +
+	  '网站名： <input name="name"><br>' +
+	  '网站 URL： <input name="url"><br>' +
+	  '<input type="submit">' +
+	  '</form>' +
+	  '</body></html>';
+
+    res.writeHead(200,{"Content-Type":"text/html"}); //第一个参数是响应的状态码，第二个是相应的文档类型
+    res.write(postHTML); //相应的具体数据
+    res.end();//响应结束
+
+}).listen(8090);
+
